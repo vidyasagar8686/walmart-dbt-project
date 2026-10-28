@@ -1,3 +1,5 @@
+-- CI test: store dimension (SCD1)
+
 {{ config(materialized ='table') }}
 
 SELECT 
