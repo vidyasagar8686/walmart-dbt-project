@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: country_details_transform
+    description: "Transformed country details"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null

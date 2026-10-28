@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: store_dim
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - unique
+
+      - name: store_size_category
+        tests:
+          - not_null
+          - accepted_values:
+              arguments: {values: ['Small', 'Medium', 'Large', 'Unknown']}
+
+  # NEW: store history (SCD2), one row per store version
+  - name: dim_store_history
+    columns:
+      - name: store_version_key
+        tests:
+          - not_null
+          - unique
+
+      - name: store_size_category
+        tests:
+          - not_null
+          - accepted_values:
+              arguments: {values: ['Small', 'Medium', 'Large', 'Unknown']}
+
+  - name: date_dim
+    columns:
+      - name: sales_date
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_sales
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('store_dim')
+                field: store_id
+
+      # NEW: every sale must point to exactly one existing store version
+      - name: store_version_key
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_store_history')
+                field: store_version_key
+
+      - name: dep_id
+        tests:
+          - not_null
+
+      - name: sales_date
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('date_dim')
+                field: sales_date
+
+      - name: weekly_sales
+        tests:
+          - not_null
+
+      - name: positive_sales
+        tests:
+          - not_null
+
+      - name: net_return_amount
+        tests:
+          - not_null

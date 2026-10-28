@@ -1,0 +1,121 @@
+version: 2
+
+models:
+  - name: country_details_antarctica
+    description: "Country details mart for Antarctica"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Antarctica']
+
+  - name: country_details_north_america
+    description: "Country details mart for North America"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['North America']
+
+  - name: country_details_south_america
+    description: "Country details mart for South America"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['South America']
+
+  - name: country_details_europe
+    description: "Country details mart for Europe"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Europe']
+
+  - name: country_details_africa
+    description: "Country details mart for Africa"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Africa']
+
+  - name: country_details_asia
+    description: "Country details mart for Asia"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Asia']
+
+  - name: country_details_oceania
+    description: "Country details mart for Oceania"
+    data_tests:
+      - unique:
+          arguments:
+            column_name: "(COUNTRY_COMMON_NAME || '|' || COUNTRY_CONTINENT_NAME || '|' || COALESCE(COUNTRY_CURRENCY, 'NO_CURRENCY'))"
+    columns:
+      - name: COUNTRY_COMMON_NAME
+        data_tests:
+          - not_null
+      - name: COUNTRY_CONTINENT_NAME
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Oceania']

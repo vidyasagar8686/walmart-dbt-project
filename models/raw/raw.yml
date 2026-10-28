@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: country_details_raw
+    description: "Raw country details"
+    columns:
+      - name: source_data
+        description: "Country data from the source JSON"
+        data_tests:
+          - not_null
+          - unique
+
+sources:
+  - name: country
+    database: GLUEDB
+    schema: PUBLIC
+    tables:
+      - name: COUNTRY_DETAILS_CP

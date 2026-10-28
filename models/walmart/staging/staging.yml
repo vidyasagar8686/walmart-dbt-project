@@ -1,0 +1,53 @@
+version: 2
+
+sources:
+  - name: walmart_raw
+    database: WALMART
+    schema: RAW
+    config:
+      loaded_at_field: loaded_at
+      freshness:
+        warn_after: {count: 8, period: day}
+        error_after: {count: 15, period: day}
+    tables:
+      - name: stores
+        config:
+          freshness: null   # master data, sent only when a store changes
+      - name: department
+      - name: fact
+
+models:
+  - name: stg_stores
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_department
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+
+      - name: dep_id
+        tests:
+          - not_null
+
+      - name: sales_date
+        tests:
+          - not_null
+
+      - name: weekly_sales
+        tests:
+          - not_null
+
+  - name: stg_fact
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+
+      - name: sales_date
+        tests:
+          - not_null

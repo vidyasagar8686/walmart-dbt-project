@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: walmart_control
+    database: WALMART
+    schema: CONTROL
+    description: "Operational tables maintained outside dbt"
+    tables:
+      - name: quarantine_triage
+        description: "Triage decisions for quarantined rows (OPEN / INVESTIGATING / RESOLVED / IGNORED)"
