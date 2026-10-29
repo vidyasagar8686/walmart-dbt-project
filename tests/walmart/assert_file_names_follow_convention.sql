@@ -13,5 +13,5 @@ SELECT file_name
 FROM staged_files
 WHERE NOT REGEXP_LIKE(
     file_name,
-    'raw/(stores|department|fact)(_[0-9]{8}_[0-9]+)?[.]csv'
+    'raw/((stores|department|fact)(_[0-9]{8}_[0-9]+)?|manifest_[0-9]{8}_[0-9]+)[.]csv'
 )
